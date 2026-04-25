@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maor & Eli — איך להתקין</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#1a0b2e;--bg-mid:#2d1b4e;
+  --pink:#ff6ec7;--pink-light:#ffb3e6;--pink-soft:#ffd6f0;
+  --purple:#b388ff;--purple-light:#d4b3ff;--purple-soft:#ebe0ff;
+  --magenta:#d946ef;
+  --ink:#2d1b4e;--muted:#9b8bb8;
+  --border:rgba(179,136,255,.25);
+  --ios:#007AFF;--android:#34A853;
+  --white:#fff;
+  --grad-main:linear-gradient(135deg,#ff6ec7 0%,#b388ff 100%);
+  --grad-soft:linear-gradient(135deg,#ffd6f0 0%,#ebe0ff 100%);
+  --grad-deep:linear-gradient(135deg,#1a0b2e 0%,#2d1b4e 50%,#4a1f6f 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Heebo',sans-serif;background:var(--grad-soft);color:var(--ink);min-height:100vh;direction:rtl}
+
+header{
+  background:var(--grad-deep);
+  padding:48px 24px 56px;text-align:center;
+  position:relative;overflow:hidden;
+}
+header::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 80%,rgba(255,110,199,.35),transparent 55%),
+    radial-gradient(ellipse at 80% 20%,rgba(179,136,255,.4),transparent 55%);
+  pointer-events:none;
+}
+.header-inner{position:relative;z-index:2}
+.app-icon{
+  width:96px;height:96px;border-radius:24px;
+  background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;
+  font-size:48px;margin:0 auto 20px;
+  box-shadow:0 12px 40px rgba(255,110,199,.5);
+}
+header h1{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(2rem,6vw,3rem);font-weight:400;
+  color:#fff;line-height:1.1;margin-bottom:8px;
+  text-shadow:0 4px 20px rgba(255,110,199,.4);
+}
+header h1 .amp{color:#ffb3e6;font-size:.85em}
+header p{color:rgba(255,255,255,.75);font-size:14px;letter-spacing:1.5px}
+
+main{max-width:680px;margin:0 auto;padding:36px 16px 80px;display:grid;gap:18px}
+
+.link-box{
+  background:linear-gradient(135deg,#1a0b2e,#4a1f6f);
+  border-radius:20px;padding:24px;
+  border:1px solid rgba(255,110,199,.2);
+  text-align:center;
+  box-shadow:0 8px 32px rgba(45,27,78,.15);
+}
+.link-box p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.link-display{
+  font-family:'Pacifico',cursive;font-size:1.4rem;font-weight:400;
+  color:#ffb3e6;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,179,230,.3);
+  border-radius:14px;padding:12px 20px;display:block;word-break:break-all;
+  letter-spacing:.5px;
+}
+
+.tabs{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:16px;overflow:hidden;
+  border:2px solid var(--border);background:#fff;
+}
+.tab{
+  padding:16px;text-align:center;cursor:pointer;
+  background:#fff;transition:all .2s;user-select:none;
+  font-size:14px;font-weight:700;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Heebo',sans-serif;border:none;
+}
+.tab:first-child{border-left:1px solid var(--border)}
+.tab.active-ios{background:#EAF3FF;color:var(--ios)}
+.tab.active-android{background:#EAF7EE;color:var(--android)}
+
+.guide-card{
+  background:#fff;border-radius:20px;padding:26px 22px;
+  border:1px solid var(--border);
+  box-shadow:0 8px 28px rgba(45,27,78,.08);
+  display:none;
+}
+.guide-card.visible{display:block;animation:fadeIn .3s ease}
+.guide-title{
+  font-family:'Pacifico',cursive;font-size:1.5rem;font-weight:400;
+  background:var(--grad-main);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+}
+.guide-sub{font-size:12px;color:var(--muted);margin-bottom:22px;font-style:italic}
+
+.safari-warn{
+  background:linear-gradient(135deg,#fff4fb,#f5ecff);
+  border:1.5px solid var(--pink-light);
+  border-radius:14px;padding:14px 16px;
+  display:flex;gap:10px;align-items:flex-start;
+  margin-bottom:20px;font-size:13px;line-height:1.55;
+}
+.safari-warn strong{color:var(--magenta)}
+
+.steps{display:flex;flex-direction:column;gap:18px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step-num{
+  width:32px;height:32px;border-radius:50%;
+  font-size:13px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:#fff;margin-top:1px;
+}
+.ios-steps .step-num{background:var(--ios)}
+.android-steps .step-num{background:var(--android)}
+.step-body h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.step-body p{font-size:13px;color:var(--muted);line-height:1.5}
+.step-visual{
+  background:var(--purple-soft);
+  border-radius:10px;padding:10px 14px;margin-top:8px;
+  font-size:13px;color:var(--ink);
+  border:1px solid var(--border);
+}
+.highlight{
+  display:inline-block;font-weight:700;
+  color:var(--ink);background:#fff;
+  border:1px solid var(--border);
+  border-radius:6px;padding:1px 8px;font-size:13px;
+}
+
+.result-box{
+  background:var(--grad-deep);
+  border-radius:16px;padding:22px;
+  margin-top:22px;text-align:center;
+  border:1px solid rgba(255,110,199,.2);
+}
+.result-box p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:6px}
+.result-box strong{
+  font-family:'Pacifico',cursive;
+  color:#ffb3e6;font-size:18px;display:block;font-weight:400;
+}
+
+footer{text-align:center;padding:28px;font-size:12px;color:var(--muted)}
+footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="app-icon">💜</div>
+    <h1>Maor <span class="amp">&</span> Eli</h1>
+    <p>איך להתקין באפליקציה</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="link-box">
+    <p>היכנסי לאתר הזה:</p>
+    <span class="link-display" id="appUrl">maorelijewelry.vercel.app</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active-ios" id="tabIos">📱 אייפון</button>
+    <button class="tab" id="tabAndroid">🤖 אנדרואיד</button>
+  </div>
+
+  <!-- iOS GUIDE -->
+  <div class="guide-card visible" id="guideIos">
+    <div class="guide-title">התקנה באייפון</div>
+    <div class="guide-sub">5 שלבים פשוטים</div>
+
+    <div class="safari-warn">
+      <span style="font-size:18px">⚠️</span>
+      <div><strong>חשוב:</strong> פתחי את הקישור ב־<strong>Safari</strong> בלבד (לא בכרום או מקום אחר), אחרת זה לא יעבוד.</div>
+    </div>
+
+    <div class="steps ios-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>פתחי את האתר ב־Safari</h3>
+          <p>היכנסי לכתובת שלמעלה בדפדפן Safari של האייפון.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>לחצי על כפתור השיתוף</h3>
+          <p>הכפתור שלמטה במרכז המסך — ריבוע עם חץ למעלה.</p>
+          <div class="step-visual">⬆️ <span class="highlight">Share</span> / <span class="highlight">שיתוף</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>גללי ובחרי "הוסף למסך הבית"</h3>
+          <p>גללי קצת למטה ברשימה.</p>
+          <div class="step-visual"><span class="highlight">Add to Home Screen</span> / <span class="highlight">הוספה למסך הבית</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>לחצי "הוסף"</h3>
+          <p>בפינה הימנית למעלה — תאשרי את ההוספה.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>זהו! 💜</h3>
+          <p>האייקון יופיע במסך הבית כמו אפליקציה רגילה.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <p>עכשיו יש לך</p>
+      <strong>אפליקציה במסך הבית ✨</strong>
+    </div>
+  </div>
+
+  <!-- ANDROID GUIDE -->
+  <div class="guide-card" id="guideAndroid">
+    <div class="guide-title">התקנה באנדרואיד</div>
+    <div class="guide-sub">4 שלבים פשוטים</div>
+
+    <div class="steps android-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>פתחי את האתר ב־Chrome</h3>
+          <p>היכנסי לכתובת שלמעלה בדפדפן Chrome.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>פתחי את התפריט</h3>
+          <p>3 הנקודות בפינה הימנית למעלה.</p>
+          <div class="step-visual">⋮ <span class="highlight">תפריט</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>בחרי "הוסף למסך הבית"</h3>
+          <p>או "התקן אפליקציה" — זה משתנה לפי הגרסה.</p>
+          <div class="step-visual"><span class="highlight">Install app</span> / <span class="highlight">הוסף למסך הבית</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>אישור והתקנה 💜</h3>
+          <p>האייקון יופיע מיד במסך הבית.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <p>עכשיו יש לך</p>
+      <strong>אפליקציה במסך הבית ✨</strong>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  עשוי באהבה <span class="heart">💜</span> מאור & אלי
+</footer>
+
+<script>
+const tabIos = document.getElementById('tabIos');
+const tabAndroid = document.getElementById('tabAndroid');
+const guideIos = document.getElementById('guideIos');
+const guideAndroid = document.getElementById('guideAndroid');
+
+tabIos.addEventListener('click', () => {
+  tabIos.classList.add('active-ios');
+  tabAndroid.classList.remove('active-android');
+  guideIos.classList.add('visible');
+  guideAndroid.classList.remove('visible');
+});
+tabAndroid.addEventListener('click', () => {
+  tabAndroid.classList.add('active-android');
+  tabIos.classList.remove('active-ios');
+  guideAndroid.classList.add('visible');
+  guideIos.classList.remove('visible');
+});
+
+// Auto-detect platform on load
+if (/Android/i.test(navigator.userAgent)) {
+  tabAndroid.click();
+}
+</script>
+</body>
+</html>

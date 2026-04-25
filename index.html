@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Maor & Eli Jewelry 💜</title>
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1a0b2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Maor & Eli">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- SEO -->
+<meta name="description" content="Maor & Eli Jewelry — תכשיטים מתוקים בעבודת יד 💜">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Heebo:wght@300;400;500;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-deep: #1a0b2e;
+  --bg-mid: #2d1b4e;
+  --pink: #ff6ec7;
+  --pink-light: #ffb3e6;
+  --pink-soft: #ffd6f0;
+  --purple: #b388ff;
+  --purple-light: #d4b3ff;
+  --purple-soft: #ebe0ff;
+  --lilac: #e8d5ff;
+  --magenta: #d946ef;
+  --white: #ffffff;
+  --ink: #2d1b4e;
+  --muted: #9b8bb8;
+  --border: rgba(179,136,255,.25);
+  --shadow-glow: 0 8px 32px rgba(255,110,199,.25);
+  --shadow-soft: 0 4px 20px rgba(45,27,78,.08);
+  --shadow-lg: 0 12px 40px rgba(45,27,78,.18);
+  --grad-main: linear-gradient(135deg,#ff6ec7 0%,#b388ff 100%);
+  --grad-soft: linear-gradient(135deg,#ffd6f0 0%,#ebe0ff 100%);
+  --grad-deep: linear-gradient(135deg,#1a0b2e 0%,#2d1b4e 50%,#4a1f6f 100%);
+  --r: 20px;
+  --r-sm: 14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Heebo','Quicksand',sans-serif;
+  background:var(--grad-soft);
+  color:var(--ink);
+  min-height:100vh;
+  direction:rtl;
+  font-size:15px;
+  overflow-x:hidden;
+}
+
+/* ─── HEADER ─── */
+.site-header{
+  background:var(--grad-deep);
+  padding:48px 24px 64px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.site-header::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 80%,rgba(255,110,199,.35),transparent 55%),
+    radial-gradient(ellipse at 80% 20%,rgba(179,136,255,.4),transparent 55%),
+    radial-gradient(ellipse at 50% 50%,rgba(217,70,239,.15),transparent 70%);
+  pointer-events:none;
+}
+.site-header::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 15% 25%,rgba(255,255,255,.6) 1px,transparent 1.5px),
+    radial-gradient(circle at 75% 60%,rgba(255,255,255,.5) 1px,transparent 1.5px),
+    radial-gradient(circle at 40% 80%,rgba(255,255,255,.4) 1px,transparent 1.5px),
+    radial-gradient(circle at 90% 30%,rgba(255,255,255,.5) 1px,transparent 1.5px),
+    radial-gradient(circle at 25% 65%,rgba(255,255,255,.4) 1px,transparent 1.5px);
+  background-size:200px 200px,180px 180px,220px 220px,160px 160px,240px 240px;
+  pointer-events:none;
+  opacity:.7;
+}
+.header-inner{position:relative;z-index:2}
+.logo-circle{
+  width:130px;height:130px;border-radius:50%;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  box-shadow:0 0 40px rgba(255,110,199,.5),0 0 80px rgba(179,136,255,.3);
+  position:relative;
+  overflow:hidden;
+  padding:8px;
+}
+.logo-circle::before{
+  content:'';position:absolute;inset:-3px;border-radius:50%;
+  background:var(--grad-main);
+  z-index:-1;
+}
+.logo-circle img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.site-header h1{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(2.4rem,7vw,3.6rem);
+  font-weight:400;
+  color:#fff;
+  line-height:1.1;
+  margin-bottom:8px;
+  text-shadow:0 4px 20px rgba(255,110,199,.5);
+  letter-spacing:1px;
+}
+.site-header h1 .amp{color:#ffb3e6;font-size:.85em}
+.tagline{
+  color:rgba(255,255,255,.85);
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:2px;
+}
+.tagline .heart{display:inline-block;animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+/* ─── CATEGORY TABS ─── */
+.cat-bar{
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  padding:14px 12px;
+  position:sticky;top:0;z-index:50;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 16px rgba(45,27,78,.06);
+}
+.cat-scroll{
+  display:flex;gap:8px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  padding:0 4px;
+}
+.cat-scroll::-webkit-scrollbar{display:none}
+.cat-btn{
+  flex-shrink:0;
+  padding:10px 20px;
+  border-radius:30px;
+  border:1.5px solid var(--border);
+  background:#fff;
+  color:var(--ink);
+  font-family:'Heebo',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .25s;
+  white-space:nowrap;
+  user-select:none;
+}
+.cat-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.cat-btn.active{
+  background:var(--grad-main);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:var(--shadow-glow);
+}
+
+/* ─── MAIN GRID ─── */
+main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
+.empty-state{
+  text-align:center;padding:60px 20px;
+  color:var(--muted);
+}
+.empty-state .em-emoji{font-size:48px;margin-bottom:12px}
+.empty-state h3{font-size:18px;color:var(--ink);margin-bottom:6px}
+
+/* ─── PRODUCT GRID ─── */
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+@media(min-width:520px){.products{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(min-width:760px){.products{grid-template-columns:repeat(4,1fr)}}
+
+.product-card{
+  background:#fff;
+  border-radius:var(--r);
+  overflow:hidden;
+  cursor:pointer;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  border:1.5px solid var(--border);
+  box-shadow:var(--shadow-soft);
+  position:relative;
+}
+.product-card:hover,.product-card:active{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--pink-light);
+}
+.product-img{
+  width:100%;
+  aspect-ratio:1;
+  background:var(--grad-soft);
+  position:relative;
+  overflow:hidden;
+}
+.product-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .4s;
+}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;
+  background:var(--grad-soft);
+}
+.product-info{padding:14px 12px 14px}
+.product-name{
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:4px;
+  line-height:1.3;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:2.6em;
+}
+.product-price{
+  font-family:'Pacifico',cursive;
+  font-size:20px;
+  background:var(--grad-main);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-weight:400;
+  letter-spacing:.5px;
+}
+.product-cat-badge{
+  position:absolute;top:10px;right:10px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);
+  color:var(--magenta);
+  font-size:10px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:20px;
+  letter-spacing:.5px;
+}
+
+/* ─── ITEM SCREEN ─── */
+.screen{display:none}
+.screen.active{display:block;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.item-screen{
+  background:var(--grad-soft);
+  min-height:100vh;
+}
+.item-back{
+  position:sticky;top:0;z-index:40;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  padding:14px 16px;
+  display:flex;align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.back-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:none;border:none;
+  font-family:'Heebo',sans-serif;
+  font-size:15px;font-weight:600;
+  color:var(--ink);
+  cursor:pointer;
+  padding:6px 10px;border-radius:10px;
+  transition:background .2s;
+}
+.back-btn:hover{background:rgba(179,136,255,.1)}
+.back-arrow{font-size:18px}
+
+.item-hero{
+  width:100%;
+  aspect-ratio:1;
+  max-height:480px;
+  background:var(--grad-soft);
+  overflow:hidden;
+  position:relative;
+}
+.item-hero img{width:100%;height:100%;object-fit:cover}
+.item-hero-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:120px;
+}
+.item-body{
+  background:#fff;
+  border-radius:32px 32px 0 0;
+  margin-top:-24px;
+  padding:30px 22px 40px;
+  position:relative;
+  box-shadow:0 -8px 32px rgba(45,27,78,.06);
+}
+.item-cat{
+  display:inline-block;
+  background:var(--grad-main);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:5px 14px;
+  border-radius:20px;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+.item-name{
+  font-family:'Pacifico',cursive;
+  font-size:32px;
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.15;
+  margin-bottom:10px;
+}
+.item-price{
+  font-family:'Pacifico',cursive;
+  font-size:38px;
+  background:var(--grad-main);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:22px;
+  letter-spacing:.5px;
+}
+.item-desc{
+  font-size:15px;
+  line-height:1.7;
+  color:#5b4a78;
+  margin-bottom:30px;
+  white-space:pre-line;
+}
+.order-btn{
+  width:100%;
+  background:var(--grad-main);
+  color:#fff;
+  border:none;
+  border-radius:18px;
+  padding:18px 24px;
+  font-family:'Heebo',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .25s;
+  box-shadow:var(--shadow-glow);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  letter-spacing:.5px;
+}
+.order-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 36px rgba(255,110,199,.45);
+}
+.order-btn:active{transform:translateY(0)}
+
+/* ─── ORDER MODAL ─── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(26,11,46,.7);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:200;
+  display:none;
+  align-items:flex-end;justify-content:center;
+  animation:fadeOverlay .25s ease;
+}
+.modal-overlay.show{display:flex}
+@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
+
+.modal{
+  background:#fff;
+  width:100%;
+  max-width:480px;
+  border-radius:28px 28px 0 0;
+  padding:28px 22px 30px;
+  box-shadow:0 -10px 40px rgba(0,0,0,.3);
+  animation:slideUp .3s cubic-bezier(.4,0,.2,1);
+}
+@media(min-width:520px){
+  .modal-overlay{align-items:center}
+  .modal{border-radius:24px;margin:20px}
+}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.modal-handle{
+  width:42px;height:4px;
+  background:var(--border);
+  border-radius:4px;
+  margin:0 auto 18px;
+}
+.modal h3{
+  font-family:'Pacifico',cursive;
+  font-size:26px;
+  text-align:center;
+  background:var(--grad-main);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+  font-weight:400;
+}
+.modal-sub{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.seller-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:14px;
+}
+.seller-btn{
+  background:var(--grad-soft);
+  border:2px solid var(--border);
+  border-radius:18px;
+  padding:22px 14px 18px;
+  cursor:pointer;
+  transition:all .25s;
+  font-family:'Heebo',sans-serif;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.seller-btn:hover{
+  border-color:var(--pink);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-glow);
+  background:#fff;
+}
+.seller-emoji{
+  font-size:36px;
+  width:64px;height:64px;
+  border-radius:50%;
+  background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(255,110,199,.4);
+}
+.seller-name{
+  font-size:17px;
+  font-weight:700;
+  color:var(--ink);
+}
+.seller-wa{
+  font-size:11px;
+  color:var(--magenta);
+  font-weight:600;
+  display:flex;align-items:center;gap:4px;
+}
+.modal-cancel{
+  width:100%;
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  padding:12px;
+  font-family:'Heebo',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:12px;
+  transition:background .2s;
+}
+.modal-cancel:hover{background:var(--purple-soft)}
+
+/* ─── UPDATE TOAST ─── */
+.update-toast{
+  position:fixed;bottom:20px;right:50%;transform:translateX(50%) translateY(120%);
+  background:var(--grad-main);
+  color:#fff;
+  padding:14px 22px;
+  border-radius:30px;
+  font-size:14px;font-weight:600;
+  box-shadow:var(--shadow-glow);
+  z-index:300;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  display:flex;align-items:center;gap:8px;
+}
+.update-toast.show{transform:translateX(50%) translateY(0)}
+
+/* ─── FOOTER ─── */
+footer{
+  text-align:center;
+  padding:30px 20px 40px;
+  font-size:13px;
+  color:var(--muted);
+  background:transparent;
+}
+footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in-out infinite}
+.install-link{margin-top:14px}
+.install-link a{
+  display:inline-block;
+  background:#fff;
+  color:var(--magenta);
+  padding:10px 22px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:13px;
+  border:1.5px solid var(--border);
+  box-shadow:var(--shadow-soft);
+  transition:all .25s;
+}
+.install-link a:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-glow);
+  border-color:var(--pink-light);
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--purple-light);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--purple)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HOME SCREEN ═══════════ -->
+<div id="screenHome" class="screen active">
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-circle" id="headerLogo">
+      <img src="/images/logo.png" alt="Maor & Eli Jewelry">
+    </div>
+    <h1>Maor <span class="amp">&</span> Eli</h1>
+    <p class="tagline">JEWELRY <span class="heart">💜</span></p>
+  </div>
+</header>
+
+<nav class="cat-bar">
+  <div class="cat-scroll" id="catScroll">
+    <!-- categories injected by JS -->
+  </div>
+</nav>
+
+<main>
+  <div id="productsGrid" class="products">
+    <!-- products injected by JS -->
+  </div>
+  <div id="emptyState" class="empty-state" style="display:none">
+    <div class="em-emoji">✨</div>
+    <h3>אין כאן עדיין תכשיטים</h3>
+    <p>בקרוב יתווספו פריטים חדשים</p>
+  </div>
+</main>
+
+<footer>
+  <div>עשוי באהבה <span class="heart">💜</span> מאור & אלי</div>
+  <div class="install-link"><a href="/install.html">📲 איך מתקינים את האפליקציה</a></div>
+</footer>
+
+</div>
+
+<!-- ═══════════ ITEM SCREEN ═══════════ -->
+<div id="screenItem" class="screen item-screen">
+  <div class="item-back">
+    <button class="back-btn" onclick="showScreen('home')">
+      <span class="back-arrow">→</span>
+      <span>חזרה לקטלוג</span>
+    </button>
+  </div>
+  <div class="item-hero" id="itemHero"></div>
+  <div class="item-body">
+    <div class="item-cat" id="itemCat"></div>
+    <h2 class="item-name" id="itemName"></h2>
+    <div class="item-price" id="itemPrice"></div>
+    <p class="item-desc" id="itemDesc"></p>
+    <button class="order-btn" id="orderBtn">
+      <span>💜</span>
+      <span>הזמיני עכשיו</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ ORDER MODAL ═══════════ -->
+<div id="orderModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h3>איזו מוכרת תרצי?</h3>
+    <p class="modal-sub">נפתח לך וואטסאפ עם הודעה מוכנה ✨</p>
+    <div class="seller-grid">
+      <button class="seller-btn" onclick="orderFrom('maor')">
+        <div class="seller-emoji">👑</div>
+        <div class="seller-name">מאור</div>
+        <div class="seller-wa">💬 וואטסאפ</div>
+      </button>
+      <button class="seller-btn" onclick="orderFrom('eli')">
+        <div class="seller-emoji">🌸</div>
+        <div class="seller-name">אלי</div>
+        <div class="seller-wa">💬 וואטסאפ</div>
+      </button>
+    </div>
+    <button class="modal-cancel" onclick="closeModal()">ביטול</button>
+  </div>
+</div>
+
+<!-- ═══════════ UPDATE TOAST ═══════════ -->
+<div id="updateToast" class="update-toast">
+  <span>✨</span>
+  <span>גרסה חדשה — מרענן...</span>
+</div>
+
+<script>
+// ═════════════════════════════════════════════════════════
+// CONFIGURATION — ערכי כאן את הפריטים והמספרים
+// ═════════════════════════════════════════════════════════
+
+const SELLERS = {
+  maor: {
+    name: 'מאור',
+    // 052-3335747
+    phone: '972523335747'
+  },
+  eli: {
+    name: 'אלי',
+    // 🚧 להחליף במספר האמיתי של אלי כשיגיע
+    phone: '972500000000'
+  }
+};
+
+const CATEGORIES = [
+  { id: 'all',       name: 'הכל',         emoji: '✨' },
+  { id: 'keychains', name: 'מחזיקים',     emoji: '🔑' },
+  { id: 'bracelets', name: 'צמידי יד',    emoji: '💞' },
+  { id: 'anklets',   name: 'צמידי רגל',   emoji: '🌊' },
+  { id: 'rings',     name: 'טבעות',       emoji: '💍' },
+  { id: 'earrings',  name: 'עגילים',      emoji: '🌸' },
+  { id: 'necklaces', name: 'שרשראות',     emoji: '💎' },
+  { id: 'sets',      name: 'סטים',        emoji: '✨' },
+];
+
+// 💎 פריטי קטלוג — ערכי כאן את המחירים והתיאורים.
+// המחירים כרגע 0 — להחליף!
+const PRODUCTS = [
+  {
+    id: 1,
+    name: 'מחזיק מפתחות אות מעוצבת',
+    price: 8,
+    category: 'keychains',
+    image: '01-keychain-cursive.jpeg',
+    emoji: '🔑',
+    description: 'מחזיק מפתחות עדין עם אות מעוצבת בעבודת יד.\nניתן להזמין בכל אות שתבחרי 💜\nמושלם לתיק או למחזיק המפתחות.'
+  },
+  {
+    id: 2,
+    name: 'מחזיק מפתחות כוכבי פנינים',
+    price: 8,
+    category: 'keychains',
+    image: '02-keychain-stars.jpeg',
+    emoji: '⭐',
+    description: 'מחזיק מפתחות מהמם עם שני כוכבים מחרוזי פנינים לבנים.\nעבודת יד מדויקת, כל פנינה מושחלת בקפידה ✨'
+  },
+  {
+    id: 3,
+    name: 'צמיד רגל פסטל',
+    price: 9,
+    category: 'anklets',
+    image: '03-bracelet-pastel.jpeg',
+    emoji: '💚',
+    description: 'צמיד רגל עדין עם חרוזים בגווני תכלת וירוק לימוני פסטליים.\nמראה מתוק וקיצי, מושלם לקיץ ולחוף 🌊'
+  },
+  {
+    id: 4,
+    name: 'צמיד רגל פסטל - תקריב',
+    price: 9,
+    category: 'anklets',
+    image: '04-bracelet-pastel-close.jpeg',
+    emoji: '💙',
+    description: 'תקריב על צמיד הרגל הפסטלי - חרוזים מבריקים בתכלת וירוק לימוני.\nהשילוב יוצר אפקט נוצץ ומרענן ✨'
+  },
+  {
+    id: 5,
+    name: 'טבעת זהב כפולה',
+    price: 5,
+    category: 'rings',
+    image: '05-ring-double-gold.jpeg',
+    emoji: '💛',
+    description: 'טבעת מעוצבת בגוון זהב עם שתי שורות במראה אלגנטי.\nמתאימה למידות שונות, סטיילינג מושלם ✨'
+  },
+  {
+    id: 6,
+    name: 'סט עגילים ומחזיק כוכבים',
+    price: 15,
+    category: 'sets',
+    image: '06-set-stars-earrings-keychain.jpeg',
+    emoji: '⭐',
+    description: 'סט מתואם של זוג עגילי כוכב מפנינים + מחזיק תואם.\nמושלם למתנה או לעצמך 💜\nשתי החתיכות בעבודת יד.'
+  },
+  {
+    id: 7,
+    name: 'מחזיק מפתחות גל ים',
+    price: 8,
+    category: 'keychains',
+    image: '07-keychain-wave.jpeg',
+    emoji: '🌊',
+    description: 'מחזיק מפתחות בכסף עם תליון גל וחרוזים שחורים.\nמראה מינימליסטי וים-תיכוני 🌊'
+  },
+  {
+    id: 8,
+    name: 'עגילי כוכב ים זהב',
+    price: 10,
+    category: 'earrings',
+    image: '08-earrings-starfish.jpeg',
+    emoji: '⭐',
+    description: 'עגילי כוכב ים בצבע זהב עדין.\nקלים מאוד וכייפים, מושלמים לקיץ 🌟'
+  },
+  {
+    id: 9,
+    name: 'טבעת לב זהב',
+    price: 5,
+    category: 'rings',
+    image: '09-ring-heart.jpeg',
+    emoji: '💛',
+    description: 'טבעת עדינה בגוון זהב עם תליון לב קטן.\nרומנטית ומתוקה - מתנה מושלמת 💛'
+  },
+  {
+    id: 10,
+    name: 'עגילי כוכבי פנינים',
+    price: 10,
+    category: 'earrings',
+    image: '10-earrings-stars.jpeg',
+    emoji: '✨',
+    description: 'עגילים עדינים עם כוכבי פנינים לבנים.\nאלגנטיים ומתאימים לכל אירוע ✨'
+  },
+  {
+    id: 11,
+    name: 'מחזיק מפתחות פפיון - זהב',
+    price: 8,
+    category: 'keychains',
+    image: '11-keychain-bow-gold.jpeg',
+    emoji: '🎀',
+    description: 'מחזיק מפתחות חמוד עם תליון פפיון לבן וטבעת זהובה.\nמראה מתוק וכייפי 🎀'
+  },
+  {
+    id: 12,
+    name: 'מחזיק מפתחות פפיון - כסף',
+    price: 8,
+    category: 'keychains',
+    image: '12-keychain-bow-silver.jpeg',
+    emoji: '🎀',
+    description: 'מחזיק מפתחות עם תליון פפיון לבן וטבעת כסופה.\nאותו עיצוב חמוד בגוון יותר קלאסי ✨'
+  },
+];
+
+// ═════════════════════════════════════════════════════════
+// STATE
+// ═════════════════════════════════════════════════════════
+let currentCategory = 'all';
+let currentItem = null;
+
+// ═════════════════════════════════════════════════════════
+// RENDER
+// ═════════════════════════════════════════════════════════
+function formatPrice(price) {
+  return price > 0 ? '₪' + price : 'מחיר בקרוב';
+}
+
+function renderCategories() {
+  const wrap = document.getElementById('catScroll');
+  wrap.innerHTML = CATEGORIES.map(c => `
+    <button class="cat-btn ${c.id === currentCategory ? 'active' : ''}"
+            onclick="setCategory('${c.id}')">
+      <span>${c.emoji}</span> ${c.name}
+    </button>
+  `).join('');
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  const empty = document.getElementById('emptyState');
+  const items = currentCategory === 'all'
+    ? PRODUCTS
+    : PRODUCTS.filter(p => p.category === currentCategory);
+
+  if (items.length === 0) {
+    grid.innerHTML = '';
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+
+  const catNameMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c.name]));
+
+  grid.innerHTML = items.map(p => `
+    <div class="product-card" onclick="openItem(${p.id})">
+      <div class="product-img">
+        ${p.image
+          ? `<img src="/images/${p.image}" alt="${escapeHtml(p.name)}" loading="lazy">`
+          : `<div class="product-img-placeholder">${p.emoji || '💜'}</div>`}
+        <span class="product-cat-badge">${catNameMap[p.category] || ''}</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${escapeHtml(p.name)}</div>
+        <div class="product-price">${formatPrice(p.price)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setCategory(catId) {
+  currentCategory = catId;
+  renderCategories();
+  renderProducts();
+}
+
+// ═════════════════════════════════════════════════════════
+// SCREENS
+// ═════════════════════════════════════════════════════════
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const target = name === 'item' ? 'screenItem' : 'screenHome';
+  document.getElementById(target).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function openItem(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentItem = p;
+
+  const catName = (CATEGORIES.find(c => c.id === p.category) || {}).name || '';
+  document.getElementById('itemCat').textContent = catName;
+  document.getElementById('itemName').textContent = p.name;
+  document.getElementById('itemPrice').textContent = formatPrice(p.price);
+  document.getElementById('itemDesc').textContent = p.description || '';
+
+  const hero = document.getElementById('itemHero');
+  hero.innerHTML = p.image
+    ? `<img src="/images/${p.image}" alt="${escapeHtml(p.name)}">`
+    : `<div class="item-hero-placeholder">${p.emoji || '💜'}</div>`;
+
+  showScreen('item');
+}
+
+// ═════════════════════════════════════════════════════════
+// ORDER FLOW
+// ═════════════════════════════════════════════════════════
+document.getElementById('orderBtn').addEventListener('click', openModal);
+
+function openModal() {
+  document.getElementById('orderModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function orderFrom(sellerKey) {
+  const seller = SELLERS[sellerKey];
+  if (!seller || !currentItem) return;
+
+  const priceText = currentItem.price > 0 ? ` ב־₪${currentItem.price}` : '';
+  const msg = `היי ${seller.name}! ראיתי את ${currentItem.name}${priceText} ואני רוצה להזמין 💜`;
+  const url = `https://wa.me/${seller.phone}?text=${encodeURIComponent(msg)}`;
+
+  closeModal();
+  window.open(url, '_blank');
+}
+
+// ═════════════════════════════════════════════════════════
+// UTILS
+// ═════════════════════════════════════════════════════════
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+// ═════════════════════════════════════════════════════════
+// INIT
+// ═════════════════════════════════════════════════════════
+renderCategories();
+renderProducts();
+
+// Keyboard: Esc closes modal
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+<!-- PWA Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register('/sw.js');
+
+      // New SW found → tell it to activate immediately
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'installed') {
+            newSW.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      });
+
+      // SW already waiting → activate it now
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+
+      // SW message from activate event (new version took over)
+      navigator.serviceWorker.addEventListener('message', e => {
+        if (e.data?.type === 'SW_UPDATED') {
+          showUpdateToast();
+        }
+      });
+
+      // Controller changed → reload
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+          refreshing = true;
+          window.location.reload();
+        }
+      });
+
+      // Check for updates every 30 seconds
+      setInterval(() => reg.update(), 30000);
+
+    } catch(err) { console.log('SW error:', err); }
+  });
+}
+
+function showUpdateToast() {
+  const toast = document.getElementById('updateToast');
+  if (toast) {
+    toast.classList.add('show');
+    setTimeout(() => window.location.reload(), 1500);
+  }
+}
+</script>
+</body>
+</html>
