@@ -1,5 +1,5 @@
 // ─── Maor & Eli Jewelry Service Worker ───────────────────
-const VERSION = 'maoreli-v6';
+const VERSION = 'maoreli-v7';
 const CORE = ['/', '/index.html', '/manifest.json', '/install.html'];
 
 // ── INSTALL ──────────────────────────────────────────────

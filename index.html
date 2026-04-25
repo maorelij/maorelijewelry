@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Maor & Eli Jewelry 💜</title>
+<title>Maor & Elli Jewelry 💜</title>
 
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
@@ -11,12 +11,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Maor & Eli">
+<meta name="apple-mobile-web-app-title" content="Maor & Elli">
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 <!-- SEO -->
-<meta name="description" content="Maor & Eli Jewelry — תכשיטים מתוקים בעבודת יד 💜">
+<meta name="description" content="Maor & Elli Jewelry — תכשיטים מתוקים בעבודת יד 💜">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -251,6 +251,50 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   padding:4px 10px;
   border-radius:20px;
   letter-spacing:.5px;
+}
+.custom-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:linear-gradient(135deg,#ffd6f0 0%,#ebe0ff 100%);
+  color:var(--magenta);
+  font-size:10.5px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:12px;
+  margin-top:5px;
+  letter-spacing:.3px;
+  border:1px solid rgba(217,70,239,.2);
+}
+.item-custom{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,#ffd6f0 0%,#ebe0ff 100%);
+  border:1.5px solid rgba(217,70,239,.25);
+  border-radius:16px;
+  padding:14px 18px;
+  margin-bottom:24px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+}
+.item-custom .ic-emoji{
+  font-size:22px;
+  flex-shrink:0;
+}
+.item-custom .ic-text{
+  line-height:1.4;
+}
+.item-custom .ic-text strong{
+  color:var(--magenta);
+  display:block;
+  margin-bottom:2px;
+}
+.item-custom .ic-text small{
+  font-size:12px;
+  font-weight:500;
+  opacity:.8;
 }
 
 /* ─── ITEM SCREEN ─── */
@@ -599,7 +643,7 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
       <img src="/images/logo.png" alt="em תכשיטים">
     </div>
 
-    <h1 class="about-title">Maor <span class="amp">&</span> Eli</h1>
+    <h1 class="about-title">Maor <span class="amp">&</span> Elli</h1>
     <p class="about-subtitle">JEWELRY ✨</p>
 
     <div class="about-story">
@@ -632,9 +676,9 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
   </button>
   <div class="header-inner">
     <div class="logo-circle" id="headerLogo">
-      <img src="/images/logo.png" alt="Maor & Eli Jewelry">
+      <img src="/images/logo.png" alt="Maor & Elli Jewelry">
     </div>
-    <h1>Maor <span class="amp">&</span> Eli</h1>
+    <h1>Maor <span class="amp">&</span> Elli</h1>
     <p class="tagline">JEWELRY <span class="heart">💜</span></p>
   </div>
 </header>
@@ -677,6 +721,13 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
     <h2 class="item-name" id="itemName"></h2>
     <div class="item-price" id="itemPrice"></div>
     <p class="item-desc" id="itemDesc"></p>
+    <div class="item-custom" id="itemCustom" style="display:none">
+      <span class="ic-emoji">🎨</span>
+      <div class="ic-text">
+        <strong>אפשר בעיצוב אישי!</strong>
+        <small>תוכלי לבחור צבעים שונים — כתבי לנו בהזמנה</small>
+      </div>
+    </div>
     <button class="order-btn" id="orderBtn">
       <span>✉️</span>
       <span>שלחי הזמנה במייל</span>
@@ -699,14 +750,15 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
 const SHOP_EMAIL = 'maorelijewelry1@outlook.co.il';
 
 const CATEGORIES = [
-  { id: 'all',       name: 'הכל',         emoji: '✨' },
-  { id: 'keychains', name: 'מחזיקים',     emoji: '🔑' },
-  { id: 'bracelets', name: 'צמידי יד',    emoji: '💞' },
-  { id: 'anklets',   name: 'צמידי רגל',   emoji: '🌊' },
-  { id: 'rings',     name: 'טבעות',       emoji: '💍' },
-  { id: 'earrings',  name: 'עגילים',      emoji: '🌸' },
-  { id: 'necklaces', name: 'שרשראות',     emoji: '💎' },
-  { id: 'sets',      name: 'סטים',        emoji: '✨' },
+  { id: 'all',          name: 'הכל',         emoji: '✨' },
+  { id: 'keychains',    name: 'מחזיקים',     emoji: '🔑' },
+  { id: 'bracelets',    name: 'צמידי יד',    emoji: '💞' },
+  { id: 'anklets',      name: 'צמידי רגל',   emoji: '🌊' },
+  { id: 'rings',        name: 'טבעות',       emoji: '💍' },
+  { id: 'thumb_rings',  name: 'טבעות אגודל', emoji: '👍' },
+  { id: 'earrings',     name: 'עגילים',      emoji: '🌸' },
+  { id: 'necklaces',    name: 'שרשראות',     emoji: '💎' },
+  { id: 'sets',         name: 'סטים',        emoji: '✨' },
 ];
 
 // 💎 פריטי קטלוג — ערכי כאן את המחירים והתיאורים.
@@ -737,6 +789,7 @@ const PRODUCTS = [
     category: 'anklets',
     image: '03-bracelet-pastel.jpeg',
     emoji: '💚',
+    custom: true,
     description: 'צמיד רגל עדין עם חרוזים בגווני תכלת וירוק לימוני פסטליים.\nמראה מתוק וקיצי, מושלם לקיץ ולחוף 🌊'
   },
   {
@@ -746,6 +799,7 @@ const PRODUCTS = [
     category: 'anklets',
     image: '04-bracelet-pastel-close.jpeg',
     emoji: '💙',
+    custom: true,
     description: 'תקריב על צמיד הרגל הפסטלי - חרוזים מבריקים בתכלת וירוק לימוני.\nהשילוב יוצר אפקט נוצץ ומרענן ✨'
   },
   {
@@ -820,6 +874,15 @@ const PRODUCTS = [
     emoji: '🎀',
     description: 'מחזיק מפתחות עם תליון פפיון לבן וטבעת כסופה.\nאותו עיצוב חמוד בגוון יותר קלאסי ✨'
   },
+  {
+    id: 13,
+    name: 'טבעת אגודל לב',
+    price: 5,
+    category: 'thumb_rings',
+    image: '13-ring-thumb-heart.png',
+    emoji: '💗',
+    description: 'טבעת אגודל עדינה בכסף עם תליון לב מעוצב.\nמתאימה לאגודל ולכל אצבע שתבחרי 💜\nעבודת יד.'
+  },
 ];
 
 // ═════════════════════════════════════════════════════════
@@ -874,6 +937,7 @@ function renderProducts() {
       <div class="product-info">
         <div class="product-name">${escapeHtml(p.name)}</div>
         <div class="product-price">${formatPrice(p.price)}</div>
+        ${p.custom ? `<div class="custom-badge">🎨 בעיצוב אישי</div>` : ''}
       </div>
     </div>
   `).join('');
@@ -914,6 +978,7 @@ function openItem(id) {
   document.getElementById('itemName').textContent = p.name;
   document.getElementById('itemPrice').textContent = formatPrice(p.price);
   document.getElementById('itemDesc').textContent = p.description || '';
+  document.getElementById('itemCustom').style.display = p.custom ? 'flex' : 'none';
 
   const hero = document.getElementById('itemHero');
   hero.innerHTML = p.image
