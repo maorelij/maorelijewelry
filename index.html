@@ -364,114 +364,6 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
 }
 .order-btn:active{transform:translateY(0)}
 
-/* ─── ORDER MODAL ─── */
-.modal-overlay{
-  position:fixed;inset:0;
-  background:rgba(26,11,46,.7);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  z-index:200;
-  display:none;
-  align-items:flex-end;justify-content:center;
-  animation:fadeOverlay .25s ease;
-}
-.modal-overlay.show{display:flex}
-@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
-
-.modal{
-  background:#fff;
-  width:100%;
-  max-width:480px;
-  border-radius:28px 28px 0 0;
-  padding:28px 22px 30px;
-  box-shadow:0 -10px 40px rgba(0,0,0,.3);
-  animation:slideUp .3s cubic-bezier(.4,0,.2,1);
-}
-@media(min-width:520px){
-  .modal-overlay{align-items:center}
-  .modal{border-radius:24px;margin:20px}
-}
-@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-
-.modal-handle{
-  width:42px;height:4px;
-  background:var(--border);
-  border-radius:4px;
-  margin:0 auto 18px;
-}
-.modal h3{
-  font-family:'Pacifico',cursive;
-  font-size:26px;
-  text-align:center;
-  background:var(--grad-main);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:6px;
-  font-weight:400;
-}
-.modal-sub{
-  text-align:center;
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:24px;
-}
-.seller-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-bottom:14px;
-}
-.seller-btn{
-  background:var(--grad-soft);
-  border:2px solid var(--border);
-  border-radius:18px;
-  padding:22px 14px 18px;
-  cursor:pointer;
-  transition:all .25s;
-  font-family:'Heebo',sans-serif;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-}
-.seller-btn:hover{
-  border-color:var(--pink);
-  transform:translateY(-3px);
-  box-shadow:var(--shadow-glow);
-  background:#fff;
-}
-.seller-emoji{
-  font-size:36px;
-  width:64px;height:64px;
-  border-radius:50%;
-  background:var(--grad-main);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px rgba(255,110,199,.4);
-}
-.seller-name{
-  font-size:17px;
-  font-weight:700;
-  color:var(--ink);
-}
-.seller-wa{
-  font-size:11px;
-  color:var(--magenta);
-  font-weight:600;
-  display:flex;align-items:center;gap:4px;
-}
-.modal-cancel{
-  width:100%;
-  background:transparent;
-  border:none;
-  color:var(--muted);
-  padding:12px;
-  font-family:'Heebo',sans-serif;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  border-radius:12px;
-  transition:background .2s;
-}
-.modal-cancel:hover{background:var(--purple-soft)}
-
 /* ─── UPDATE TOAST ─── */
 .update-toast{
   position:fixed;bottom:20px;right:50%;transform:translateX(50%) translateY(120%);
@@ -577,31 +469,9 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
     <div class="item-price" id="itemPrice"></div>
     <p class="item-desc" id="itemDesc"></p>
     <button class="order-btn" id="orderBtn">
-      <span>💜</span>
-      <span>הזמיני עכשיו</span>
+      <span>✉️</span>
+      <span>שלחי הזמנה במייל</span>
     </button>
-  </div>
-</div>
-
-<!-- ═══════════ ORDER MODAL ═══════════ -->
-<div id="orderModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <h3>איזו מוכרת תרצי?</h3>
-    <p class="modal-sub">נפתח לך וואטסאפ עם הודעה מוכנה ✨</p>
-    <div class="seller-grid">
-      <button class="seller-btn" onclick="orderFrom('maor')">
-        <div class="seller-emoji">👑</div>
-        <div class="seller-name">מאור</div>
-        <div class="seller-wa">💬 וואטסאפ</div>
-      </button>
-      <button class="seller-btn" onclick="orderFrom('eli')">
-        <div class="seller-emoji">🌸</div>
-        <div class="seller-name">אלי</div>
-        <div class="seller-wa">💬 וואטסאפ</div>
-      </button>
-    </div>
-    <button class="modal-cancel" onclick="closeModal()">ביטול</button>
   </div>
 </div>
 
@@ -613,21 +483,11 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
 
 <script>
 // ═════════════════════════════════════════════════════════
-// CONFIGURATION — ערכי כאן את הפריטים והמספרים
+// CONFIGURATION — ערכי כאן את הפריטים והמייל
 // ═════════════════════════════════════════════════════════
 
-const SELLERS = {
-  maor: {
-    name: 'מאור',
-    // 052-3335747
-    phone: '972523335747'
-  },
-  eli: {
-    name: 'אלי',
-    // 🚧 להחליף במספר האמיתי של אלי כשיגיע
-    phone: '972500000000'
-  }
-};
+// 📧 כתובת המייל של החנות — לכאן יישלחו ההזמנות
+const SHOP_EMAIL = 'maorelijewelry1@outlook.co.il';
 
 const CATEGORIES = [
   { id: 'all',       name: 'הכל',         emoji: '✨' },
@@ -848,27 +708,17 @@ function openItem(id) {
 // ═════════════════════════════════════════════════════════
 // ORDER FLOW
 // ═════════════════════════════════════════════════════════
-document.getElementById('orderBtn').addEventListener('click', openModal);
+document.getElementById('orderBtn').addEventListener('click', orderItem);
 
-function openModal() {
-  document.getElementById('orderModal').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('orderModal').classList.remove('show');
-  document.body.style.overflow = '';
-}
-
-function orderFrom(sellerKey) {
-  const seller = SELLERS[sellerKey];
-  if (!seller || !currentItem) return;
+function orderItem() {
+  if (!currentItem) return;
 
   const priceText = currentItem.price > 0 ? ` ב־₪${currentItem.price}` : '';
-  const msg = `היי ${seller.name}! ראיתי את ${currentItem.name}${priceText} ואני רוצה להזמין 💜`;
-  const url = `https://wa.me/${seller.phone}?text=${encodeURIComponent(msg)}`;
+  const subject = `הזמנה: ${currentItem.name}`;
+  const body = `היי! 💜\n\nראיתי באתר את ${currentItem.name}${priceText} ואני רוצה להזמין.\n\nתודה!\n`;
 
-  closeModal();
-  window.open(url, '_blank');
+  const mailto = `mailto:${SHOP_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
 }
 
 // ═════════════════════════════════════════════════════════
@@ -885,11 +735,6 @@ function escapeHtml(s) {
 // ═════════════════════════════════════════════════════════
 renderCategories();
 renderProducts();
-
-// Keyboard: Esc closes modal
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
 </script>
 
 <!-- PWA Service Worker -->
