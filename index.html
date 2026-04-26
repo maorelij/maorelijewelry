@@ -219,6 +219,15 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   background:var(--grad-soft);
 }
 .product-info{padding:14px 12px 14px}
+.product-sku{
+  font-family:'Quicksand','Heebo',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  color:var(--magenta);
+  letter-spacing:1.2px;
+  margin-bottom:4px;
+  opacity:.85;
+}
 .product-name{
   font-size:14px;
   font-weight:700;
@@ -367,7 +376,19 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   font-weight:400;
   color:var(--ink);
   line-height:1.15;
-  margin-bottom:10px;
+  margin-bottom:6px;
+}
+.item-sku{
+  display:inline-block;
+  font-family:'Quicksand','Heebo',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  color:var(--magenta);
+  letter-spacing:1.5px;
+  background:var(--purple-soft);
+  padding:4px 12px;
+  border-radius:10px;
+  margin-bottom:12px;
 }
 .item-price{
   font-family:'Pacifico',cursive;
@@ -719,6 +740,7 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
   <div class="item-body">
     <div class="item-cat" id="itemCat"></div>
     <h2 class="item-name" id="itemName"></h2>
+    <div class="item-sku" id="itemSku"></div>
     <div class="item-price" id="itemPrice"></div>
     <p class="item-desc" id="itemDesc"></p>
     <div class="item-custom" id="itemCustom" style="display:none">
@@ -925,6 +947,10 @@ function formatPrice(price) {
   return price > 0 ? '₪' + price : 'מחיר בקרוב';
 }
 
+function formatSku(id) {
+  return 'ME-' + String(id).padStart(3, '0');
+}
+
 function renderCategories() {
   const wrap = document.getElementById('catScroll');
   wrap.innerHTML = CATEGORIES.map(c => `
@@ -962,6 +988,7 @@ function renderProducts() {
         <span class="product-cat-badge">${catNameMap[p.category] || ''}</span>
       </div>
       <div class="product-info">
+        <div class="product-sku">${formatSku(p.id)}</div>
         <div class="product-name">${escapeHtml(p.name)}</div>
         <div class="product-price">${formatPrice(p.price)}</div>
         ${p.custom ? `<div class="custom-badge">🎨 בעיצוב אישי</div>` : ''}
@@ -1003,6 +1030,7 @@ function openItem(id) {
   const catName = (CATEGORIES.find(c => c.id === p.category) || {}).name || '';
   document.getElementById('itemCat').textContent = catName;
   document.getElementById('itemName').textContent = p.name;
+  document.getElementById('itemSku').textContent = 'מק״ט: ' + formatSku(p.id);
   document.getElementById('itemPrice').textContent = formatPrice(p.price);
   document.getElementById('itemDesc').textContent = p.description || '';
   document.getElementById('itemCustom').style.display = p.custom ? 'flex' : 'none';
@@ -1023,9 +1051,10 @@ document.getElementById('orderBtn').addEventListener('click', orderItem);
 function orderItem() {
   if (!currentItem) return;
 
+  const sku = formatSku(currentItem.id);
   const priceText = currentItem.price > 0 ? ` ב־₪${currentItem.price}` : '';
-  const subject = `הזמנה: ${currentItem.name}`;
-  const body = `היי! 💜\n\nראיתי באתר את ${currentItem.name}${priceText} ואני רוצה להזמין.\n\nתודה!\n`;
+  const subject = `הזמנה: ${sku} — ${currentItem.name}`;
+  const body = `היי! 💜\n\nראיתי באתר את ${currentItem.name}${priceText} ואני רוצה להזמין.\n\nמק״ט: ${sku}\n\nתודה!\n`;
 
   const mailto = `mailto:${SHOP_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailto;
