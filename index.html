@@ -63,7 +63,7 @@ body{
 /* ─── HEADER ─── */
 .site-header{
   background:var(--grad-deep);
-  padding:48px 24px 64px;
+  padding:calc(48px + env(safe-area-inset-top)) 24px 64px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -320,7 +320,7 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   background:rgba(255,255,255,.85);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
-  padding:14px 16px;
+  padding:calc(14px + env(safe-area-inset-top)) 16px 14px;
   display:flex;align-items:center;
   border-bottom:1px solid var(--border);
 }
@@ -479,7 +479,7 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   position:relative;z-index:2;
   max-width:560px;
   margin:0 auto;
-  padding:50px 24px 40px;
+  padding:calc(50px + env(safe-area-inset-top)) 24px calc(40px + env(safe-area-inset-bottom));
   text-align:center;
   min-height:100vh;
   display:flex;
@@ -596,7 +596,7 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
 /* ─── ABOUT BUTTON IN HEADER ─── */
 .about-link{
   position:absolute;
-  top:18px;left:18px;
+  top:calc(18px + env(safe-area-inset-top));left:18px;
   z-index:3;
   background:rgba(255,255,255,.15);
   backdrop-filter:blur(10px);
@@ -931,6 +931,15 @@ const PRODUCTS = [
     image: '16-earrings-stars-long.jpeg',
     emoji: '⭐',
     description: 'עגילים ארוכים עם שני כוכבי פנינה מחוברים בחרוזים ורודים עדינים.\nמרשים, נשי וכייפי ✨'
+  },
+  {
+    id: 17,
+    name: 'סט לבבות פנינה',
+    price: 15,
+    category: 'sets',
+    image: '17-set-hearts.jpeg',
+    emoji: '💗',
+    description: 'סט מקסים: זוג עגילי לב מפנינים + מחזיק תואם עם שני לבבות.\nעדין, רומנטי ומושלם למתנה 💜\nכל החתיכות בעבודת יד.'
   },
 ];
 
