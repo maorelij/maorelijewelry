@@ -806,23 +806,23 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    name: 'צמיד רגל פסטל',
-    price: 9,
-    category: 'anklets',
+    name: 'צמיד פסטל תכלת-לימוני',
+    price: 7,
+    category: 'bracelets',
     image: '03-bracelet-pastel.jpeg',
     emoji: '💚',
     custom: true,
-    description: 'צמיד רגל עדין עם חרוזים בגווני תכלת וירוק לימוני פסטליים.\nמראה מתוק וקיצי, מושלם לקיץ ולחוף 🌊'
+    description: 'צמיד יד עדין עם חרוזים בגווני תכלת וירוק לימוני פסטליים.\nמראה מתוק וקיצי, מושלם לקיץ ✨'
   },
   {
     id: 4,
-    name: 'צמיד יד פסטל',
+    name: 'צמיד פסטל תכלת-ירוק',
     price: 7,
     category: 'bracelets',
     image: '04-bracelet-pastel-close.jpeg',
     emoji: '💙',
     custom: true,
-    description: 'צמיד יד עדין עם חרוזים מבריקים בתכלת וירוק לימוני.\nהשילוב יוצר אפקט נוצץ ומרענן ✨'
+    description: 'צמיד יד עדין עם חרוזים מבריקים בתכלת וירוק.\nהשילוב יוצר אפקט נוצץ ומרענן ✨'
   },
   {
     id: 5,
@@ -909,7 +909,7 @@ const PRODUCTS = [
     id: 14,
     name: 'סט טבעות לאגודל',
     price: 15,
-    category: 'thumb_rings',
+    category: ['thumb_rings', 'sets'],
     image: '14-thumb-rings-set.jpeg',
     emoji: '💞',
     description: 'סט מקסים של שתי טבעות אגודל מתואמות:\nטבעת כסף עם לב וטבעת זהב עם לב מלא 💛\nמושלם לשילוב או למתנה.'
@@ -973,9 +973,12 @@ function renderCategories() {
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   const empty = document.getElementById('emptyState');
+  const matchesCategory = (p, cat) => Array.isArray(p.category)
+    ? p.category.includes(cat)
+    : p.category === cat;
   const items = currentCategory === 'all'
     ? PRODUCTS
-    : PRODUCTS.filter(p => p.category === currentCategory);
+    : PRODUCTS.filter(p => matchesCategory(p, currentCategory));
 
   if (items.length === 0) {
     grid.innerHTML = '';
@@ -994,7 +997,7 @@ function renderProducts() {
         ${p.image
           ? `<img src="/images/${p.image}" alt="${escapeHtml(p.name)}" loading="lazy">`
           : `<div class="product-img-placeholder">${p.emoji || '💜'}</div>`}
-        <span class="product-cat-badge">${catNameMap[p.category] || ''}</span>
+        <span class="product-cat-badge">${catNameMap[Array.isArray(p.category) ? p.category[0] : p.category] || ''}</span>
       </div>
       <div class="product-info">
         <div class="product-sku">${formatSku(p.id)}</div>
@@ -1036,7 +1039,8 @@ function openItem(id) {
   if (!p) return;
   currentItem = p;
 
-  const catName = (CATEGORIES.find(c => c.id === p.category) || {}).name || '';
+  const primaryCat = Array.isArray(p.category) ? p.category[0] : p.category;
+  const catName = (CATEGORIES.find(c => c.id === primaryCat) || {}).name || '';
   document.getElementById('itemCat').textContent = catName;
   document.getElementById('itemName').textContent = p.name;
   document.getElementById('itemSku').textContent = 'מק״ט: ' + formatSku(p.id);
