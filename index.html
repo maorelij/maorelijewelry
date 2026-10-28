@@ -593,6 +593,27 @@ main{max-width:920px;margin:0 auto;padding:24px 14px 100px}
   animation:beat 1.6s ease-in-out infinite;
 }
 
+/* ─── PROMO VIDEO ─── */
+.promo-video-wrap{
+  margin:4px auto 28px;
+  width:100%;
+  max-width:360px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:
+    0 0 40px rgba(255,110,199,.4),
+    0 12px 40px rgba(0,0,0,.3);
+  border:2px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.3);
+}
+.promo-video{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:420px;
+  object-fit:cover;
+}
+
 /* ─── ABOUT BUTTON IN HEADER ─── */
 .about-link{
   position:absolute;
@@ -666,6 +687,12 @@ footer .heart{color:var(--pink);display:inline-block;animation:beat 1.6s ease-in
 
     <h1 class="about-title">Maor <span class="amp">&</span> Ellie</h1>
     <p class="about-subtitle">JEWELRY ✨</p>
+
+    <div class="promo-video-wrap">
+      <video class="promo-video" autoplay muted loop playsinline preload="metadata" poster="/images/logo.png">
+        <source src="/videos/promo.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <div class="about-story">
       <p>היי! אנחנו <span class="highlight">מאור ואלי</span>, חברות הכי טובות 💜</p>
@@ -952,15 +979,6 @@ const PRODUCTS = [
     description: 'שרשרת עדינה עם חרוזים בגוון תכלת זוהר וחרוזים שקופים-זהובים.\nשילוב נוצץ ומרענן ✨'
   },
   {
-    id: 20,
-    name: 'טבעת שרשרת כסף',
-    price: 1,
-    category: 'rings',
-    image: '20-ring-chain-silver.jpeg',
-    emoji: '💍',
-    description: 'טבעת עדינה בעיצוב חוליות שרשרת בגוון כסף.\nמראה מינימליסטי וטרנדי 🤍'
-  },
-  {
     id: 21,
     name: 'צמיד יד תכלת-אפרסק',
     price: 5,
@@ -1000,13 +1018,13 @@ const PRODUCTS = [
   },
   {
     id: 25,
-    name: 'צמידי צמה (2 ב־10)',
-    price: 10,
+    name: 'צמידי צמה (2 ב־5)',
+    price: 5,
     category: 'bracelets',
     image: '25-bracelet-braid.jpeg',
     emoji: '💙',
     custom: true,
-    description: 'צמידי צמה עדינים מחוטים קלועים בעבודת יד.\nמבצע: 2 צמידים ב־10₪! 🎉\nלא חייבים להיות אותו צבע — תוכלי לבחור שני צבעים שונים.'
+    description: 'צמידי צמה עדינים מחוטים קלועים בעבודת יד.\nמבצע: 2 צמידים ב־5₪! 🎉\nלא חייבים להיות אותו צבע — תוכלי לבחור שני צבעים שונים.'
   },
   {
     id: 26,
@@ -1043,6 +1061,33 @@ const PRODUCTS = [
     image: '29-keychain-gummy-friendship.jpeg',
     emoji: '👯',
     description: 'זוג מחזיקי מפתחות לחברות הכי טובות!\nכל מחזיק עם דובון ג׳לי בצבע אחר — צבעים בהפתעה 🎁\nמושלם לחלוקה עם החברה הכי טובה 💜'
+  },
+  {
+    id: 30,
+    name: 'חבילת הפתעה',
+    price: 20,
+    category: 'sets',
+    image: '30-surprise-mystery.jpeg',
+    emoji: '🎁',
+    description: 'כמה פריטים ב־20₪? זו ההפתעה! 🎀\nחבילה מיוחדת עם מגוון פריטים נבחרים שאנחנו נבחר במיוחד עבורך.\nמושלם למתנה או לפינוק עצמי 💜'
+  },
+  {
+    id: 31,
+    name: 'מחזיק אות E תלת מימד',
+    price: 15,
+    category: 'keychains',
+    image: '31-keychain-letter-e.jpeg',
+    emoji: '🔤',
+    description: 'מחזיק מפתחות בעיצוב תלת מימד של האות E.\nעבודת הדפסה מיוחדת, קל ועמיד 💗\nגם לכל אות אחרת ניתן להזמין בעיצוב אישי.'
+  },
+  {
+    id: 32,
+    name: 'מחזיק אות M תלת מימד',
+    price: 15,
+    category: 'keychains',
+    image: '32-keychain-letter-m.jpeg',
+    emoji: '🔤',
+    description: 'מחזיק מפתחות בעיצוב תלת מימד של האות M.\nעבודת הדפסה מיוחדת, קל ועמיד ✨\nגם לכל אות אחרת ניתן להזמין בעיצוב אישי.'
   },
 ];
 

@@ -1,5 +1,5 @@
 // ─── Maor & Eli Jewelry Service Worker ───────────────────
-const VERSION = 'maoreli-v18';
+const VERSION = 'maoreli-v19';
 const CORE = ['/', '/index.html', '/manifest.json', '/install.html'];
 
 // ── INSTALL ──────────────────────────────────────────────
@@ -58,6 +58,23 @@ self.addEventListener('fetch', e => {
         if (cached) return cached;
         return fetch(e.request).then(res => {
           caches.open(VERSION).then(c => c.put(e.request, res.clone()));
+          return res;
+        });
+      })
+    );
+    return;
+  }
+
+  // Videos → cache-first (don't re-download the promo each time)
+  if (url.includes('/videos/') || url.match(/\.(mp4|webm|mov)$/)) {
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        if (cached) return cached;
+        return fetch(e.request).then(res => {
+          // Only cache full 200 responses, not 206 partial content
+          if (res.status === 200) {
+            caches.open(VERSION).then(c => c.put(e.request, res.clone()));
+          }
           return res;
         });
       })

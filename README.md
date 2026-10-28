@@ -1,4 +1,4 @@
-# Maor & Eli Jewelry 💜
+# Maor & Ellie Jewelry 💜
 
 PWA לקטלוג תכשיטים של מאור ואלי.
 מבוסס על אותה תשתית של Omer's Kitchen.
@@ -19,35 +19,29 @@ maorelijewelry/
 
 ## 🛠️ עריכה מהירה
 
-### החלפת מספרי וואטסאפ
-ב־`index.html`, חפש `SELLERS` ועדכן:
+### החלפת כתובת המייל לקבלת הזמנות
+ב־`index.html`, חפש `SHOP_EMAIL` ועדכן:
 ```js
-const SELLERS = {
-  maor: { name: 'מאור', phone: '972501234567' },  // בלי + ובלי 0 בהתחלה
-  eli:  { name: 'אלי',  phone: '972501234568' },
-};
+const SHOP_EMAIL = 'maorelijewelry1@outlook.co.il';
 ```
 
 ### הוספת/עריכת פריטים
 ב־`index.html`, חפש `PRODUCTS` ועדכן את המערך:
 ```js
 {
-  id: 5,
+  id: 14,
   name: 'שם הפריט',
-  price: 40,
-  category: 'necklaces',  // necklaces | bracelets | rings | earrings
-  image: 'my-photo.jpg',  // קובץ ב-/images/  או null לאימוג'י
+  price: 12,
+  category: 'necklaces',
+  image: 'my-photo.jpg',
   emoji: '💜',
+  custom: true,  // אופציונלי - יוסיף תווית "בעיצוב אישי"
   description: 'תיאור...\nשורה שנייה...'
 }
 ```
 
-### הוספת קטגוריה חדשה
-חפש `CATEGORIES` ב־`index.html`:
-```js
-{ id: 'charms', name: 'תליונים', emoji: '✨' },
-```
-ואז השתמש ב־`category: 'charms'` בפריטים.
+### קטגוריות זמינות
+`keychains` | `bracelets` | `anklets` | `rings` | `thumb_rings` | `earrings` | `necklaces` | `sets`
 
 ## 🖼️ תמונות
 
@@ -86,7 +80,7 @@ const SELLERS = {
 1. ערוך את הקבצים (index.html / מחירים / תמונות וכו')
 2. **חשוב!** עלה את מספר הגרסה ב־`sw.js`:
    ```js
-   const VERSION = 'maoreli-v3';  // → 'maoreli-v4', 'maoreli-v5'...
+   const VERSION = 'maoreli-v7';  // → 'maoreli-v8', 'maoreli-v9'...
    ```
 3. push ל־GitHub
 4. Vercel יבנה אוטומטית
